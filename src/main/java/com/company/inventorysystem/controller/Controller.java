@@ -13,17 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.company.inventorysystem.dto.AssetInformationDTO;
+import com.company.inventorysystem.entity.AssetEntity;
 import com.company.inventorysystem.service.IService;
 
 @RestController
-public class controller {
+public class Controller {
 	
 	@Autowired
 	private IService service;
 	
 	
 	@PostMapping(value = "/asset")
-	public ResponseEntity<Object> register(@RequestBody AssetInformationDTO assetInformation, 
+	public ResponseEntity<Object> register(@RequestBody AssetEntity assetInformation, 
 			BindingResult result) {		
 		return new ResponseEntity<>(service.register(assetInformation), HttpStatus.OK);
 	}
