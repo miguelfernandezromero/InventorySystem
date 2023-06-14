@@ -44,7 +44,7 @@ public class controller {
 		return new ResponseEntity<>(service.get(id), HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/asset/{id}")
+	@GetMapping(value = "/asset/{id}/depreciation")
 	public ResponseEntity<Object> getDepreciation(@PathVariable("id") String id, BindingResult result) {		
 		return new ResponseEntity<>(service.getDepreciation(id), HttpStatus.OK);
 	}

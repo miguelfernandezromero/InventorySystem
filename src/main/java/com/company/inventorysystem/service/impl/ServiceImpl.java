@@ -1,8 +1,11 @@
 package com.company.inventorysystem.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.company.inventorysystem.dto.AssetInformationDTO;
 import com.company.inventorysystem.service.IService;
 
+@Service
 public class ServiceImpl implements IService{
 
 	@Override
