@@ -38,6 +38,7 @@ Base Url: /api
 •	Descripción: Permite obtener el valor de depreciación acumulada de un activo, calculada según el porcentaje establecido (4% anual).
 
 #Ejemplo de body para ejecucion de apis:
+
 {
     "serialNumber":"prueba",
     "description":"prueba",
