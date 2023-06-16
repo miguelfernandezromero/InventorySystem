@@ -12,45 +12,39 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.company.inventorysystem.dto.AssetInformationDTO;
 import com.company.inventorysystem.entity.AssetEntity;
 import com.company.inventorysystem.service.IService;
 
 @RestController
 public class Controller {
-	
+
 	@Autowired
-	private IService service;
-	
-	
+	IService service;
+
 	@PostMapping(value = "/asset")
-	public ResponseEntity<Object> register(@RequestBody AssetEntity assetInformation, 
-			BindingResult result) {		
-		return new ResponseEntity<>(service.register(assetInformation), HttpStatus.OK);
+	public ResponseEntity<Object> register(@RequestBody AssetEntity assetInformation, BindingResult result) {
+		return new ResponseEntity<>(service.register(assetInformation), HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping(value = "/asset/{id}")
-	public ResponseEntity<Object> update(@RequestBody AssetInformationDTO assetInformation, 
-			BindingResult result) {		
-		return new ResponseEntity<>(service.update(assetInformation), HttpStatus.OK);
+	public ResponseEntity<Object> update(@PathVariable("id") String id, @RequestBody AssetEntity assetInformation,
+			BindingResult result) {
+		return new ResponseEntity<>(service.update(id, assetInformation), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping(value = "/asset/{id}")
-	public ResponseEntity<Object> delete(@PathVariable("id") String id, BindingResult result) {		
+	public ResponseEntity<Object> delete(@PathVariable("id") String id) {
 		return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/asset/{id}")
-	public ResponseEntity<Object> get(@PathVariable("id") String id, BindingResult result) {		
+	public ResponseEntity<Object> get(@PathVariable("id") String id) {
 		return new ResponseEntity<>(service.get(id), HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/asset/{id}/depreciation")
-	public ResponseEntity<Object> getDepreciation(@PathVariable("id") String id, BindingResult result) {		
+	public ResponseEntity<Object> getDepreciation(@PathVariable("id") String id) {
 		return new ResponseEntity<>(service.getDepreciation(id), HttpStatus.OK);
 	}
-	
-	
-
 
 }
